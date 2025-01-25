@@ -40,6 +40,7 @@ public class LoginPage extends javax.swing.JFrame {
         username = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         ButtonLogin = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -114,9 +115,10 @@ public class LoginPage extends javax.swing.JFrame {
         });
         jPanel2.add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(144, 293, 171, 28));
 
+        jLabel8.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Design/User.png"))); // NOI18N
-        jLabel8.setText("jLabel8");
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(92, 246, 42, -1));
+        jLabel8.setText("Password");
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 100, -1));
 
         username.setForeground(new java.awt.Color(204, 204, 204));
         username.setText("Username");
@@ -139,6 +141,11 @@ public class LoginPage extends javax.swing.JFrame {
             }
         });
         jPanel2.add(ButtonLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 333, 89, -1));
+
+        jLabel10.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Design/User.png"))); // NOI18N
+        jLabel10.setText("Username");
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, 100, -1));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 0, 410, 570));
 
@@ -195,6 +202,7 @@ public class LoginPage extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ButtonLogin;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
