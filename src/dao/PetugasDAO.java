@@ -107,10 +107,10 @@ public class PetugasDAO {
             ps.setString(1, petugas_id);
 
             ps.executeUpdate();
-            System.out.println("Data Petugsa sudah terhapus");
+            System.out.println("Data Petugas sudah terhapus");
         }
         catch (SQLException e) {
-            System.out.println("Data Petugas dengan NIK = " + petugas_id + "tidak ditemukan");
+            System.out.println("Data Petugas dengan petugas_id = " + petugas_id + "tidak ditemukan");
         }
     }
     
