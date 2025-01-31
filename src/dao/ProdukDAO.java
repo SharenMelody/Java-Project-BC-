@@ -67,17 +67,16 @@ public class ProdukDAO {
         }
     }
     
-    public void updateProduk(String produk_idNew, String nama_produk, Double harga, String deskripsi, String stock, String satuan, String produk_idOld) {
+    public void updateProduk(String produk_id, String nama_produk, Double harga, String deskripsi, String stock, String satuan) {
         String query = "UPDATE Produk SET produk_id = ?, nama_produk = ?, harga = ?, deskripsi = ?, stock = ?, satuan = ? WHERE produk_id = ?";
         try {
             ps = con.prepareStatement(query);
-            ps.setString(1, produk_idNew);
+            ps.setString(1, produk_id);
             ps.setString(2, nama_produk);
             ps.setDouble(3, harga);
             ps.setString(4, deskripsi);
             ps.setString(5, stock);
             ps.setString(6, satuan);
-            ps.setString(7, produk_idOld);
             ps.executeUpdate();
             System.out.println("Produk berhasil diupdate");
         } catch (SQLException e) {

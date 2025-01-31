@@ -77,26 +77,25 @@ public class PetugasDAO {
         }
     }
     
-    public void updatePetugas (String petugas_idNew,String nama_petugas, String email, String password, String jabatan, String no_hp, String petugas_idOld) {
+    public void updatePetugas (String petugas_id,String nama_petugas, String email, String password, String jabatan, String no_hp) {
         String query = "UPDATE Petugas SET " +
                 "petugas_id = ?, nama_petugas, email = ?, password = ?, jabatan = ?, no_hp = ?" +
                 "WHERE petugas_id = ?";
         try {
             ps = con.prepareStatement(query);
-            ps.setString(1, petugas_idNew);
+            ps.setString(1, petugas_id);
             ps.setString(2, nama_petugas);
             ps.setString(3, email);
             ps.setString(4, password);
             ps.setString(5, jabatan);
             ps.setString(6, no_hp);
-            ps.setString(7, petugas_idOld);
 
             ps.executeUpdate();
 
-            System.out.println("Petugas berhasil diupdate dengan id petugas lama = " + petugas_idOld + " menjadi id Petugas Baru = " + petugas_idNew);
+            System.out.println("Petugas berhasil diupdate dengan id petugas " + petugas_id );
         }
         catch (SQLException e) {
-            System.out.println("Petugas dengan Id Petugas = " + petugas_idOld + "tidak ditemukan");
+            System.out.println("Petugas dengan Id Petugas = " + petugas_id + "tidak ditemukan");
         }
     }
     

@@ -15,7 +15,7 @@ public class Produk {
     Double harga;
     String deskripsi;
     String stock;
-    String satuan;
+    String satuan;  
 
     public String getProduk_id() {
         return produk_id;
