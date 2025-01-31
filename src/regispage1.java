@@ -1,3 +1,7 @@
+
+import javax.swing.JOptionPane;
+import model.Petugas;
+import dao.LoginDAO;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -9,7 +13,9 @@
  * @author User
  */
 public class regispage1 extends javax.swing.JFrame {
-
+    Petugas petugas = new Petugas();
+    LoginDAO dao = new LoginDAO();
+    
     /**
      * Creates new form regispage
      */
@@ -131,6 +137,11 @@ public class regispage1 extends javax.swing.JFrame {
         buttonLogin.setBackground(new java.awt.Color(255, 204, 51));
         buttonLogin.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         buttonLogin.setText("Login");
+        buttonLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonLoginActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -205,6 +216,42 @@ public class regispage1 extends javax.swing.JFrame {
     private void inputPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputPasswordActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_inputPasswordActionPerformed
+
+    private void buttonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLoginActionPerformed
+        String username = inputUsername.getText().trim();
+        String password = inputPassword.getText().trim();
+
+        if (username.equals("")) {
+            JOptionPane.showMessageDialog(null, "Username harus diisi...");
+        } else if (password.equals("")) {
+            JOptionPane.showMessageDialog(null, "Password harus diisi...");
+        } else {
+            LoginDAO dao = new LoginDAO();
+            Petugas petugas = dao.getPetugasByUsername(username, password);
+
+            if (petugas != null) {
+                JOptionPane.showMessageDialog(null, "Login Berhasil! Selamat datang, " + petugas.getNama_petugas());
+
+                // Cek jabatan untuk menentukan ke JFrame mana
+                if (petugas.getJabatan().equalsIgnoreCase("Manager")) {
+                    MenuUtama manager = new MenuUtama();
+                    manager.setVisible(true);
+                } 
+//                else if (petugas.getJabatan().equalsIgnoreCase("Manager")) {
+//                    ManagerFrame manager = new ManagerFrame();
+//                    manager.setVisible(true);
+//                } 
+                else {
+                    JOptionPane.showMessageDialog(null, "Jabatan tidak dikenali!");
+                }
+
+                // Tutup JFrame Login setelah pindah
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(null, "Username atau Password salah!");
+            }
+        }
+    }//GEN-LAST:event_buttonLoginActionPerformed
 
     /**
      * @param args the command line arguments
