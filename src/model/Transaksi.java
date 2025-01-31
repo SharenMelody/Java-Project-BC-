@@ -5,6 +5,8 @@
  */
 package model;
 
+import java.util.Date;
+
 /**
  *
  * @author USER
@@ -12,7 +14,7 @@ package model;
 public class Transaksi {
     String petugas_id;
     String transaksi_id;
-    String waktu_transaksi;
+    Date waktu_transaksi;
     String status_transaksi;
 
     public String getPetugas_id() {
@@ -31,11 +33,11 @@ public class Transaksi {
         this.transaksi_id = transaksi_id;
     }
 
-    public String getWaktu_transaksi() {
+    public Date getWaktu_transaksi() {
         return waktu_transaksi;
     }
 
-    public void setWaktu_transaksi(String waktu_transaksi) {
+    public void setWaktu_transaksi(Date waktu_transaksi) {
         this.waktu_transaksi = waktu_transaksi;
     }
 
