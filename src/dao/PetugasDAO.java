@@ -114,7 +114,7 @@ public class PetugasDAO {
         }
     }
     
-    public Petugas getPetugasByNik (String petugas_id) {
+    public Petugas getPetugasBypetugas_id (String petugas_id) {
         petugas = new Petugas();
         try {
             ps = con.prepareStatement("SELECT * FROM petugas WHERE petugas_id = ?", ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
