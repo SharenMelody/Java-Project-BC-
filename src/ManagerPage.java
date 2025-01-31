@@ -36,6 +36,13 @@ public class ManagerPage extends javax.swing.JFrame {
         panel_Main = new javax.swing.JPanel();
         panel_Line = new javax.swing.JPanel();
         labDashboard = new javax.swing.JLabel();
+        panelKeuangan = new javax.swing.JPanel();
+        pkLine = new javax.swing.JPanel();
+        labKeuangan = new javax.swing.JLabel();
+        panelStock = new javax.swing.JPanel();
+        psLine = new javax.swing.JPanel();
+        labStock = new javax.swing.JLabel();
+        buttonLogout = new javax.swing.JButton();
         pn_full = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
 
@@ -43,7 +50,7 @@ public class ManagerPage extends javax.swing.JFrame {
 
         pn_kiti.setBackground(new java.awt.Color(255, 153, 0));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 27)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Menu");
 
@@ -86,7 +93,7 @@ public class ManagerPage extends javax.swing.JFrame {
                 .addComponent(panel_Line, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(labDashboard)
-                .addGap(0, 34, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         panel_MainLayout.setVerticalGroup(
             panel_MainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -97,19 +104,123 @@ public class ManagerPage extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        panelKeuangan.setBackground(new java.awt.Color(255, 255, 255));
+
+        pkLine.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout pkLineLayout = new javax.swing.GroupLayout(pkLine);
+        pkLine.setLayout(pkLineLayout);
+        pkLineLayout.setHorizontalGroup(
+            pkLineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 11, Short.MAX_VALUE)
+        );
+        pkLineLayout.setVerticalGroup(
+            pkLineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        labKeuangan.setBackground(new java.awt.Color(255, 255, 255));
+        labKeuangan.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        labKeuangan.setText("Keuangan");
+        labKeuangan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                labKeuanganMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                labKeuanganMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelKeuanganLayout = new javax.swing.GroupLayout(panelKeuangan);
+        panelKeuangan.setLayout(panelKeuanganLayout);
+        panelKeuanganLayout.setHorizontalGroup(
+            panelKeuanganLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelKeuanganLayout.createSequentialGroup()
+                .addComponent(pkLine, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(labKeuangan)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        panelKeuanganLayout.setVerticalGroup(
+            panelKeuanganLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pkLine, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelKeuanganLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(labKeuangan)
+                .addContainerGap())
+        );
+
+        panelStock.setBackground(new java.awt.Color(255, 255, 255));
+
+        psLine.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout psLineLayout = new javax.swing.GroupLayout(psLine);
+        psLine.setLayout(psLineLayout);
+        psLineLayout.setHorizontalGroup(
+            psLineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 12, Short.MAX_VALUE)
+        );
+        psLineLayout.setVerticalGroup(
+            psLineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        labStock.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
+        labStock.setText("Stock");
+        labStock.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                labStockMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                labStockMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelStockLayout = new javax.swing.GroupLayout(panelStock);
+        panelStock.setLayout(panelStockLayout);
+        panelStockLayout.setHorizontalGroup(
+            panelStockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelStockLayout.createSequentialGroup()
+                .addComponent(psLine, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(labStock)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        panelStockLayout.setVerticalGroup(
+            panelStockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(psLine, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(panelStockLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(labStock)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        buttonLogout.setText("Logout");
+
         javax.swing.GroupLayout pn_kitiLayout = new javax.swing.GroupLayout(pn_kiti);
         pn_kiti.setLayout(pn_kitiLayout);
         pn_kitiLayout.setHorizontalGroup(
             pn_kitiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pn_kitiLayout.createSequentialGroup()
-                .addGroup(pn_kitiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pn_kitiLayout.createSequentialGroup()
+                .addGroup(pn_kitiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pn_kitiLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(panelKeuangan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pn_kitiLayout.createSequentialGroup()
                         .addGap(55, 55, 55)
-                        .addComponent(jLabel1))
+                        .addComponent(jLabel1)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pn_kitiLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(panel_Main, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(pn_kitiLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(panel_Main, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(129, Short.MAX_VALUE))
+                        .addComponent(panelStock, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(97, 97, 97))
+            .addGroup(pn_kitiLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(buttonLogout)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pn_kitiLayout.setVerticalGroup(
             pn_kitiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -118,7 +229,13 @@ public class ManagerPage extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(32, 32, 32)
                 .addComponent(panel_Main, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(372, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(panelKeuangan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(panelStock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 214, Short.MAX_VALUE)
+                .addComponent(buttonLogout)
+                .addContainerGap())
         );
 
         getContentPane().add(pn_kiti, java.awt.BorderLayout.LINE_START);
@@ -132,11 +249,11 @@ public class ManagerPage extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 550, Short.MAX_VALUE)
+            .addGap(0, 618, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 521, Short.MAX_VALUE)
+            .addGap(0, 506, Short.MAX_VALUE)
         );
 
         pn_full.add(jPanel1, java.awt.BorderLayout.CENTER);
@@ -160,6 +277,26 @@ public class ManagerPage extends javax.swing.JFrame {
         panel_Main.setBackground(new Color(255,255,255));
         panel_Line.setBackground(new Color(255, 255,255));
     }//GEN-LAST:event_labDashboardMouseExited
+
+    private void labKeuanganMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labKeuanganMouseEntered
+        panelKeuangan.setBackground(new Color(250,250,250));
+        pkLine.setBackground(new Color(0,120,153));
+    }//GEN-LAST:event_labKeuanganMouseEntered
+
+    private void labKeuanganMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labKeuanganMouseExited
+        panelKeuangan.setBackground(new Color(255,255,255));
+        pkLine.setBackground(new Color(255, 255,255));
+    }//GEN-LAST:event_labKeuanganMouseExited
+
+    private void labStockMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labStockMouseEntered
+        panelStock.setBackground(new Color(250,250,250));
+        psLine.setBackground(new Color(0,120,153));
+    }//GEN-LAST:event_labStockMouseEntered
+
+    private void labStockMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labStockMouseExited
+        panelStock.setBackground(new Color(255,255,255));
+        psLine.setBackground(new Color(255, 255,255));
+    }//GEN-LAST:event_labStockMouseExited
 
     /**
      * @param args the command line arguments
@@ -197,12 +334,19 @@ public class ManagerPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buttonLogout;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel labDashboard;
+    private javax.swing.JLabel labKeuangan;
+    private javax.swing.JLabel labStock;
+    private javax.swing.JPanel panelKeuangan;
+    private javax.swing.JPanel panelStock;
     private javax.swing.JPanel panel_Line;
     private javax.swing.JPanel panel_Main;
+    private javax.swing.JPanel pkLine;
     private javax.swing.JPanel pn_full;
     private javax.swing.JPanel pn_kiti;
+    private javax.swing.JPanel psLine;
     // End of variables declaration//GEN-END:variables
 }
