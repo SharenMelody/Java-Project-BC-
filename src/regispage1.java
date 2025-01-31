@@ -227,29 +227,38 @@ public class regispage1 extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Password harus diisi...");
         } else {
             LoginDAO dao = new LoginDAO();
-            Petugas petugas = dao.getPetugasByUsername(username, password);
+Petugas petugas = dao.getPetugasByUsername(username, password);
 
-            if (petugas != null) {
-                JOptionPane.showMessageDialog(null, "Login Berhasil! Selamat datang, " + petugas.getNama_petugas());
-
-                // Cek jabatan untuk menentukan ke JFrame mana
-                if (petugas.getJabatan().equalsIgnoreCase("Manager")) {
-                    MenuUtama manager = new MenuUtama();
-                    manager.setVisible(true);
-                } 
-//                else if (petugas.getJabatan().equalsIgnoreCase("Manager")) {
-//                    ManagerFrame manager = new ManagerFrame();
-//                    manager.setVisible(true);
-//                } 
-                else {
-                    JOptionPane.showMessageDialog(null, "Jabatan tidak dikenali!");
-                }
-
-                // Tutup JFrame Login setelah pindah
-                this.dispose();
-            } else {
-                JOptionPane.showMessageDialog(null, "Username atau Password salah!");
-            }
+if (petugas != null) {
+    JOptionPane.showMessageDialog(null, "Login Berhasil! Selamat datang, " + petugas.getNama_petugas());
+    
+    // Menggunakan switch-case untuk menangani berbagai jabatan
+    switch (petugas.getJabatan()) {
+        case "manager":
+            MenuUtama manager = new MenuUtama();
+            manager.setVisible(true);
+            break;
+        
+        case "kasir":
+            MenuUtama kasir = new MenuUtama();
+            kasir.setVisible(true);
+            break;
+        
+        case "staff_gudang":
+            MenuUtama staff_gudang = new MenuUtama();
+            staff_gudang.setVisible(true);
+            break;
+        
+        default:
+            JOptionPane.showMessageDialog(null, "Jabatan tidak dikenali!");
+            break;
+    }
+    
+    // Tutup JFrame Login setelah pindah
+    this.dispose();
+} else {
+    JOptionPane.showMessageDialog(null, "Username atau Password salah!");
+}
         }
     }//GEN-LAST:event_buttonLoginActionPerformed
 
