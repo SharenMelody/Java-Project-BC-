@@ -13,7 +13,7 @@ public class Detail_Transaksi {
     String qty_produk;
     String transaksi_id;
     String produk_id;
-    Double total_harga;
+    Double harga_satuan;
 
     public String getQty_produk() {
         return qty_produk;
@@ -39,12 +39,12 @@ public class Detail_Transaksi {
         this.produk_id = produk_id;
     }
 
-    public Double getTotal_harga() {
-        return total_harga;
+    public Double getHarga_satuan() {
+        return harga_satuan;
     }
 
-    public void setTotal_harga(Double total_harga) {
-        this.total_harga = total_harga;
+    public void setHarga_satuan(Double total_harga) {
+        this.harga_satuan = total_harga;
     }
     
     
