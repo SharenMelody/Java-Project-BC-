@@ -73,6 +73,9 @@ public class ManagerPage extends javax.swing.JFrame {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 labDashboardMouseEntered(evt);
             }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                labDashboardMouseExited(evt);
+            }
         });
 
         javax.swing.GroupLayout panel_MainLayout = new javax.swing.GroupLayout(panel_Main);
@@ -152,6 +155,11 @@ public class ManagerPage extends javax.swing.JFrame {
         panel_Line.setBackground(new Color(0, 120,153));
         
     }//GEN-LAST:event_labDashboardMouseEntered
+
+    private void labDashboardMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labDashboardMouseExited
+        panel_Main.setBackground(new Color(255,255,255));
+        panel_Line.setBackground(new Color(255, 255,255));
+    }//GEN-LAST:event_labDashboardMouseExited
 
     /**
      * @param args the command line arguments
