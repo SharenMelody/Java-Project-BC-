@@ -10,16 +10,16 @@ package model;
  * @author USER
  */
 public class Detail_Restock {
-    String qty_produk;
+    int qty_produk;
     String restock_id;
     String produk_id;
     Double harga_satuan;
 
-    public String getQty_produk() {
+    public int getQty_produk() {
         return qty_produk;
     }
 
-    public void setQty_produk(String qty_produk) {
+    public void setQty_produk(int qty_produk) {
         this.qty_produk = qty_produk;
     }
 
