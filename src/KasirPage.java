@@ -61,12 +61,20 @@ public class KasirPage extends javax.swing.JFrame {
         });
 
         panel_Line.setBackground(new java.awt.Color(255, 255, 255));
+        panel_Line.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                panel_LineMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                panel_LineMouseExited(evt);
+            }
+        });
 
         javax.swing.GroupLayout panel_LineLayout = new javax.swing.GroupLayout(panel_Line);
         panel_Line.setLayout(panel_LineLayout);
         panel_LineLayout.setHorizontalGroup(
             panel_LineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 10, Short.MAX_VALUE)
+            .addGap(0, 16, Short.MAX_VALUE)
         );
         panel_LineLayout.setVerticalGroup(
             panel_LineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -90,7 +98,7 @@ public class KasirPage extends javax.swing.JFrame {
             panel_MainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel_MainLayout.createSequentialGroup()
                 .addComponent(panel_Line, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(labDashboard)
                 .addGap(0, 24, Short.MAX_VALUE))
         );
@@ -106,12 +114,20 @@ public class KasirPage extends javax.swing.JFrame {
         panelOrder.setBackground(new java.awt.Color(255, 255, 255));
 
         psLine.setBackground(new java.awt.Color(255, 255, 255));
+        psLine.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                psLineMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                psLineMouseExited(evt);
+            }
+        });
 
         javax.swing.GroupLayout psLineLayout = new javax.swing.GroupLayout(psLine);
         psLine.setLayout(psLineLayout);
         psLineLayout.setHorizontalGroup(
             psLineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 12, Short.MAX_VALUE)
+            .addGap(0, 18, Short.MAX_VALUE)
         );
         psLineLayout.setVerticalGroup(
             psLineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -135,9 +151,9 @@ public class KasirPage extends javax.swing.JFrame {
             panelOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelOrderLayout.createSequentialGroup()
                 .addComponent(psLine, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(labOrder)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 55, Short.MAX_VALUE))
         );
         panelOrderLayout.setVerticalGroup(
             panelOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -222,25 +238,45 @@ public class KasirPage extends javax.swing.JFrame {
     }//GEN-LAST:event_panel_MainMouseEntered
 
     private void labDashboardMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labDashboardMouseEntered
-        panel_Main.setBackground(new Color(250,250,250));
-        panel_Line.setBackground(new Color(0, 120,153));
+//        panel_Main.setBackground(new Color(250,250,250));
+//        panel_Line.setBackground(new Color(0, 120,153));
         
     }//GEN-LAST:event_labDashboardMouseEntered
 
     private void labDashboardMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labDashboardMouseExited
-        panel_Main.setBackground(new Color(255,255,255));
-        panel_Line.setBackground(new Color(255, 255,255));
+//        panel_Main.setBackground(new Color(255,255,255));
+//        panel_Line.setBackground(new Color(255, 255,255));
     }//GEN-LAST:event_labDashboardMouseExited
 
     private void labOrderMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labOrderMouseEntered
-        panelOrder.setBackground(new Color(250,250,250));
-        psLine.setBackground(new Color(0,120,153));
+//        panelOrder.setBackground(new Color(250,250,250));
+//        psLine.setBackground(new Color(0,120,153));
     }//GEN-LAST:event_labOrderMouseEntered
 
     private void labOrderMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labOrderMouseExited
-        panelOrder.setBackground(new Color(255,255,255));
-        psLine.setBackground(new Color(255, 255,255));
+//        panelOrder.setBackground(new Color(255,255,255));
+//        psLine.setBackground(new Color(255, 255,255));
     }//GEN-LAST:event_labOrderMouseExited
+
+    private void panel_LineMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel_LineMouseEntered
+        panelOrder.setBackground(new Color(250,250,250));
+        psLine.setBackground(new Color(0,120,153));
+    }//GEN-LAST:event_panel_LineMouseEntered
+
+    private void panel_LineMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel_LineMouseExited
+     panelOrder.setBackground(new Color(255,255,255));
+      psLine.setBackground(new Color(255, 255,255));
+    }//GEN-LAST:event_panel_LineMouseExited
+
+    private void psLineMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_psLineMouseEntered
+       panelOrder.setBackground(new Color(250,250,250));
+        psLine.setBackground(new Color(0,120,153));
+    }//GEN-LAST:event_psLineMouseEntered
+
+    private void psLineMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_psLineMouseExited
+        panelOrder.setBackground(new Color(255,255,255));
+      psLine.setBackground(new Color(255, 255,255));
+    }//GEN-LAST:event_psLineMouseExited
 
     /**
      * @param args the command line arguments
