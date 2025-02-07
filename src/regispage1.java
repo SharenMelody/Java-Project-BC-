@@ -2,6 +2,7 @@
 import javax.swing.JOptionPane;
 import model.Petugas;
 import dao.LoginDAO;
+import dao.PetugasDAO;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -14,7 +15,7 @@ import dao.LoginDAO;
  */
 public class regispage1 extends javax.swing.JFrame {
     Petugas petugas = new Petugas();
-    LoginDAO dao = new LoginDAO();
+    PetugasDAO dao = new PetugasDAO();
     
     /**
      * Creates new form regispage
@@ -46,7 +47,10 @@ public class regispage1 extends javax.swing.JFrame {
         iconlock = new javax.swing.JLabel();
         labelPass = new javax.swing.JLabel();
         inputPassword = new javax.swing.JTextField();
-        buttonLogin = new javax.swing.JButton();
+        buttonRegister = new javax.swing.JButton();
+        iconlock1 = new javax.swing.JLabel();
+        labelPass1 = new javax.swing.JLabel();
+        inputEmail1 = new javax.swing.JTextField();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -134,12 +138,24 @@ public class regispage1 extends javax.swing.JFrame {
             }
         });
 
-        buttonLogin.setBackground(new java.awt.Color(255, 204, 51));
-        buttonLogin.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        buttonLogin.setText("Login");
-        buttonLogin.addActionListener(new java.awt.event.ActionListener() {
+        buttonRegister.setBackground(new java.awt.Color(255, 204, 51));
+        buttonRegister.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        buttonRegister.setText("Login");
+        buttonRegister.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonLoginActionPerformed(evt);
+                buttonRegisterActionPerformed(evt);
+            }
+        });
+
+        iconlock1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Lock.png"))); // NOI18N
+
+        labelPass1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        labelPass1.setForeground(new java.awt.Color(102, 102, 102));
+        labelPass1.setText("Email :");
+
+        inputEmail1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inputEmail1ActionPerformed(evt);
             }
         });
 
@@ -161,19 +177,29 @@ public class regispage1 extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(49, 49, 49)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(buttonLogin)
+                            .addComponent(buttonRegister)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(usericon, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(iconlock))
+                                .addComponent(usericon, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(labelUsername)
-                                    .addComponent(labelPass, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(labelUsername)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(inputUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(inputPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                .addComponent(inputUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(3, 3, 3))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(56, 56, 56)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(iconlock)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(labelPass, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(inputPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(iconlock1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(labelPass1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(inputEmail1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(35, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -191,18 +217,24 @@ public class regispage1 extends javax.swing.JFrame {
                     .addComponent(inputUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelUsername)
                     .addComponent(usericon, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addComponent(labelPass))
+                        .addGap(6, 6, 6)
+                        .addComponent(labelPass1))
+                    .addComponent(iconlock1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(inputEmail1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(iconlock, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(6, 6, 6)
+                        .addComponent(labelPass))
+                    .addComponent(iconlock, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(inputPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(31, 31, 31)
-                .addComponent(buttonLogin)
+                .addGap(17, 17, 17)
+                .addComponent(buttonRegister)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -217,7 +249,7 @@ public class regispage1 extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_inputPasswordActionPerformed
 
-    private void buttonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLoginActionPerformed
+    private void buttonRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRegisterActionPerformed
         String username = inputUsername.getText().trim();
         String password = inputPassword.getText().trim();
 
@@ -244,9 +276,9 @@ if (petugas != null) {
             kasir.setVisible(true);
             break;
         
-        case "staff_gudang":
-            MenuUtama staff_gudang = new MenuUtama();
-            staff_gudang.setVisible(true);
+        case "staff gudang":
+            MenuUtama staffGudang = new MenuUtama();
+            staffGudang.setVisible(true);
             break;
         
         default:
@@ -260,7 +292,11 @@ if (petugas != null) {
     JOptionPane.showMessageDialog(null, "Username atau Password salah!");
 }
         }
-    }//GEN-LAST:event_buttonLoginActionPerformed
+    }//GEN-LAST:event_buttonRegisterActionPerformed
+
+    private void inputEmail1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputEmail1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputEmail1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -299,10 +335,12 @@ if (petugas != null) {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bc;
-    private javax.swing.JButton buttonLogin;
+    private javax.swing.JButton buttonRegister;
     private javax.swing.JLabel dupat;
     private javax.swing.JLabel foto;
     private javax.swing.JLabel iconlock;
+    private javax.swing.JLabel iconlock1;
+    private javax.swing.JTextField inputEmail1;
     private javax.swing.JTextField inputPassword;
     private javax.swing.JTextField inputUsername;
     private javax.swing.JLabel jLabel1;
@@ -310,6 +348,7 @@ if (petugas != null) {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel labelPass;
+    private javax.swing.JLabel labelPass1;
     private javax.swing.JLabel labelUsername;
     private javax.swing.JLabel usericon;
     private javax.swing.JLabel welcome;

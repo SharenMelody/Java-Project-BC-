@@ -200,6 +200,11 @@ public class ManagerPage extends javax.swing.JFrame {
         );
 
         buttonLogout.setText("Logout");
+        buttonLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonLogoutActionPerformed(evt);
+            }
+        });
 
         panelOrder.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -256,9 +261,7 @@ public class ManagerPage extends javax.swing.JFrame {
                     .addGroup(pn_kitiLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(pn_kitiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pn_kitiLayout.createSequentialGroup()
-                                .addComponent(buttonLogout)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(buttonLogout)
                             .addComponent(panelOrder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pn_kitiLayout.createSequentialGroup()
                         .addContainerGap()
@@ -362,6 +365,13 @@ public class ManagerPage extends javax.swing.JFrame {
        panelOrder.setBackground(new Color(255,255,255));
        poLine.setBackground(new Color(255, 255,255));
     }//GEN-LAST:event_labOrderMouseExited
+
+    private void buttonLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLogoutActionPerformed
+        this.dispose();
+        
+        loginpage1 login = new loginpage1();    
+        login.setVisible(true);
+    }//GEN-LAST:event_buttonLogoutActionPerformed
 
     /**
      * @param args the command line arguments
