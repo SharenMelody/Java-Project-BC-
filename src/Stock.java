@@ -4,11 +4,16 @@
  * and open the template in the editor.
  */
 
+import dao.ProdukDAO;
+import model.Produk;
+
 /**
  *
  * @author smkn24
  */
 public class Stock extends javax.swing.JPanel {
+    Produk guru = new Produk();
+    ProdukDAO dao = new ProdukDAO();
 
     /**
      * Creates new form Stock
@@ -30,10 +35,10 @@ public class Stock extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        scrStock = new javax.swing.JScrollPane();
+        tblStock = new javax.swing.JTable();
+        btnSearch = new javax.swing.JTextField();
+        btnPrint = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -47,7 +52,7 @@ public class Stock extends javax.swing.JPanel {
         jLabel3.setForeground(new java.awt.Color(255, 153, 0));
         jLabel3.setText("Stock Barang");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblStock.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -58,16 +63,16 @@ public class Stock extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        scrStock.setViewportView(tblStock);
 
-        jTextField1.setText("Cari Barang");
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        btnSearch.setText("Cari Barang");
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                btnSearchActionPerformed(evt);
             }
         });
 
-        jButton1.setText("Print");
+        btnPrint.setText("Print");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -90,9 +95,9 @@ public class Stock extends javax.swing.JPanel {
                         .addContainerGap(56, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jButton1)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 539, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(btnPrint)
+                                .addComponent(scrStock, javax.swing.GroupLayout.PREFERRED_SIZE, 539, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(73, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -104,11 +109,11 @@ public class Stock extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(scrStock, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
-                .addComponent(jButton1)
+                .addComponent(btnPrint)
                 .addContainerGap(290, Short.MAX_VALUE))
         );
 
@@ -124,19 +129,38 @@ public class Stock extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_btnSearchActionPerformed
 
+    public javax.swing.JTextField getBtnSearch() {
+        return btnSearch;
+    }
+
+    public javax.swing.JTable getTblStock() {
+        tblStock.setModel(dao.getModel());
+        scrStock.setViewportView(tblStock);
+        return tblStock;
+    }
+
+    public void setBtnSearch(String text) {
+        btnSearch.setText(text);
+    }
+    
+    // Setter untuk JTable (misalnya untuk mengubah data)
+    public void setTableData(Object[][] data) {
+        tblStock.setModel(dao.getModel());
+        scrStock.setViewportView(tblStock);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnPrint;
+    private javax.swing.JTextField btnSearch;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JScrollPane scrStock;
+    private javax.swing.JTable tblStock;
     // End of variables declaration//GEN-END:variables
 }

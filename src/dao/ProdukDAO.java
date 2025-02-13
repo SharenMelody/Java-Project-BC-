@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 import koneksi.Koneksi;
 import model.Produk;
 
@@ -113,5 +114,21 @@ public class ProdukDAO {
             return null;
         }
         return produk;
+    }
+    
+    //View
+    public DefaultTableModel getModel() {
+        Object[][] dataTabel = new Object[getListProduk().size()][6];
+        for(int i = 0; i < getListProduk().size(); i++) {
+            dataTabel[i][0] = getListProduk().get(i).getProduk_id();
+            dataTabel[i][1] = getListProduk().get(i).getNama_produk();
+            dataTabel[i][2] = getListProduk().get(i).getDeskripsi();
+            dataTabel[i][3] = getListProduk().get(i).getHarga();
+            dataTabel[i][4] = getListProduk().get(i).getStock();
+            dataTabel[i][5] = getListProduk().get(i).getSatuan();
+        }
+        String[] colNames = {"Produk ID", "Nama Produk", "Deskripsi","Harga", "Stock", "Satuan"};
+        DefaultTableModel model = new DefaultTableModel(dataTabel, colNames);
+        return model;
     }
 }

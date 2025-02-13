@@ -1,6 +1,8 @@
 
+import java.awt.CardLayout;
 import java.awt.Color;
 import javax.swing.JPanel;
+import javax.swing.JTable;
 
 
 
@@ -15,12 +17,31 @@ import javax.swing.JPanel;
  * @author User
  */
 public class gudangpage2 extends javax.swing.JFrame {
-
+ 
+    private Dashboard dashboardPanel; // Panel Dashboard
+    private Stock stockBarangPanel; // Panel Stock Barang
+    private CardLayout cardLayout;  // Variabel CardLayout
+    
     /**
      * Creates new form ManagerPage
      */
     public gudangpage2() {
         initComponents();
+        
+        cardLayout = new CardLayout();
+        pn_full.setLayout(cardLayout);
+        
+        dashboardPanel = new Dashboard();
+        stockBarangPanel = new Stock();
+
+        pn_full.add(dashboardPanel, "Dashboard");
+        pn_full.add(stockBarangPanel, "Stock");
+
+//        cardLayout = new CardLayout();
+//        pn_full.getLayout();
+//
+//        pn_full.add(dashboardPanel, "Dashboard");
+//        pn_full.add(stockBarangPanel, "StockBarang");
     }
 
     /**
@@ -32,6 +53,7 @@ public class gudangpage2 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         pn_kiti = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         panel_Main = new javax.swing.JPanel();
@@ -43,9 +65,26 @@ public class gudangpage2 extends javax.swing.JFrame {
         buttonLogout = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         pn_full = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 646, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 510, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         pn_kiti.setBackground(new java.awt.Color(255, 153, 0));
 
@@ -55,6 +94,9 @@ public class gudangpage2 extends javax.swing.JFrame {
 
         panel_Main.setBackground(new java.awt.Color(255, 255, 255));
         panel_Main.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panel_MainMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 panel_MainMouseEntered(evt);
             }
@@ -76,6 +118,9 @@ public class gudangpage2 extends javax.swing.JFrame {
         labDashboard.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         labDashboard.setText("Dashboard");
         labDashboard.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                labDashboardMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 labDashboardMouseEntered(evt);
             }
@@ -121,6 +166,9 @@ public class gudangpage2 extends javax.swing.JFrame {
         labStock.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         labStock.setText("Stock Barang");
         labStock.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                labStockMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 labStockMouseEntered(evt);
             }
@@ -201,22 +249,6 @@ public class gudangpage2 extends javax.swing.JFrame {
 
         pn_full.setBackground(new java.awt.Color(255, 255, 255));
         pn_full.setLayout(new java.awt.BorderLayout());
-
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 646, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 510, Short.MAX_VALUE)
-        );
-
-        pn_full.add(jPanel1, java.awt.BorderLayout.CENTER);
-
         getContentPane().add(pn_full, java.awt.BorderLayout.CENTER);
 
         pack();
@@ -256,6 +288,47 @@ public class gudangpage2 extends javax.swing.JFrame {
     login.setVisible(true);
     }//GEN-LAST:event_buttonLogoutActionPerformed
 
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        System.out.println("Window dibuka, menampilkan Dashboard...");
+//        cardLayout.show(pn_full, "Dashboard");
+        setContentPanel("Dashboard");
+    }//GEN-LAST:event_formWindowOpened
+
+    private void panel_MainMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel_MainMouseClicked
+        System.out.println("Dashboard diklik, menampilkan Dashboard...");
+        setContentPanel("Dashboard");
+    }//GEN-LAST:event_panel_MainMouseClicked
+
+    private void labStockMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labStockMouseClicked
+        System.out.println("Stock Barang diklik, menampilkan Stock...");
+        setContentPanel("Stock");
+        accessStockTable();
+    }//GEN-LAST:event_labStockMouseClicked
+
+    private void labDashboardMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labDashboardMouseClicked
+        System.out.println("Dashboard diklik, menampilkan Dashboard...");
+        setContentPanel("Dashboard");
+    }//GEN-LAST:event_labDashboardMouseClicked
+    
+    private void setContentPanel(String panelName) {
+        cardLayout.show(pn_full, panelName);
+    }
+    
+    // Method untuk mengakses dan memanipulasi tabel di Stock
+    public void updateStockTable(Object[][] data) {
+        stockBarangPanel.setTableData(data);
+    }
+    
+    // Getter untuk akses tabel di Stock
+    public JTable getStockTable() {
+        return stockBarangPanel.getTblStock();
+    }
+    
+    public void accessStockTable() {
+        JTable table = getStockTable();        
+        System.out.println("Number of rows in table: " + table.getRowCount());
+    }
+        
     /**
      * @param args the command line arguments
      */
