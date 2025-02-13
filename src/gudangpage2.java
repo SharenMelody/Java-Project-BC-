@@ -17,8 +17,9 @@ import javax.swing.JTable;
  * @author User
  */
 public class gudangpage2 extends javax.swing.JFrame {
+    Dashboard dashboardPanel = new Dashboard();
  
-    private Dashboard dashboardPanel; // Panel Dashboard
+//    private Dashboard dashboardPanel; // Panel Dashboard
     private Stock stockBarangPanel; // Panel Stock Barang
     private CardLayout cardLayout;  // Variabel CardLayout
     
@@ -289,9 +290,10 @@ public class gudangpage2 extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonLogoutActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        System.out.println("Window dibuka, menampilkan Dashboard...");
-//        cardLayout.show(pn_full, "Dashboard");
-        setContentPanel("Dashboard");
+        pn_full.removeAll(); // Clear the current panel
+        pn_full.add(dashboardPanel); // Add the Dashboard panel
+        pn_full.revalidate(); // Refresh the panel
+        pn_full.repaint(); // Repaint the panel
     }//GEN-LAST:event_formWindowOpened
 
     private void panel_MainMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel_MainMouseClicked
