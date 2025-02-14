@@ -17,6 +17,4 @@ public class codelogin {
               LoginFrame.pack();
               LoginFrame.setLocationRelativeTo(null);
             }
-        
-    
 }
