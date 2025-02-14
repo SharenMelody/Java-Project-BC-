@@ -12,7 +12,7 @@ import model.Produk;
  * @author smkn24
  */
 public class Stock extends javax.swing.JPanel {
-    Produk guru = new Produk();
+    Produk produk = new Produk();
     ProdukDAO dao = new ProdukDAO();
 
     /**

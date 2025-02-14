@@ -1,6 +1,10 @@
 
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Font;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 
 
@@ -16,12 +20,16 @@ import javax.swing.JPanel;
  */
 public class KasirPage extends javax.swing.JFrame {
 
+    Dashboard dashboardPanel = new Dashboard();
+    Kasir kasirPanel = new Kasir();
     /**
      * Creates new form ManagerPage
      */
     public KasirPage() {
         initComponents();
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -84,6 +92,9 @@ public class KasirPage extends javax.swing.JFrame {
         labDashboard.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         labDashboard.setText("Dashboard");
         labDashboard.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                labDashboardMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 labDashboardMouseEntered(evt);
             }
@@ -99,8 +110,8 @@ public class KasirPage extends javax.swing.JFrame {
             .addGroup(panel_MainLayout.createSequentialGroup()
                 .addComponent(panel_Line, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(labDashboard)
-                .addGap(0, 24, Short.MAX_VALUE))
+                .addComponent(labDashboard, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         panel_MainLayout.setVerticalGroup(
             panel_MainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -137,6 +148,9 @@ public class KasirPage extends javax.swing.JFrame {
         labOrder.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         labOrder.setText("Order");
         labOrder.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                labOrderMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 labOrderMouseEntered(evt);
             }
@@ -151,9 +165,9 @@ public class KasirPage extends javax.swing.JFrame {
             panelOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelOrderLayout.createSequentialGroup()
                 .addComponent(psLine, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(labOrder)
-                .addGap(0, 55, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(labOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         panelOrderLayout.setVerticalGroup(
             panelOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -178,7 +192,7 @@ public class KasirPage extends javax.swing.JFrame {
                 .addGroup(pn_kitiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pn_kitiLayout.createSequentialGroup()
                         .addComponent(buttonLogout)
-                        .addContainerGap(138, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pn_kitiLayout.createSequentialGroup()
                         .addGroup(pn_kitiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(panel_Main, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -219,7 +233,7 @@ public class KasirPage extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 650, Short.MAX_VALUE)
+            .addGap(0, 641, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -238,24 +252,24 @@ public class KasirPage extends javax.swing.JFrame {
     }//GEN-LAST:event_panel_MainMouseEntered
 
     private void labDashboardMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labDashboardMouseEntered
-//        panel_Main.setBackground(new Color(250,250,250));
-//        panel_Line.setBackground(new Color(0, 120,153));
+        panel_Main.setBackground(new Color(250,250,250));
+        panel_Line.setBackground(new Color(0, 120,153));
         
     }//GEN-LAST:event_labDashboardMouseEntered
 
     private void labDashboardMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labDashboardMouseExited
-//        panel_Main.setBackground(new Color(255,255,255));
-//        panel_Line.setBackground(new Color(255, 255,255));
+        panel_Main.setBackground(new Color(255,255,255));
+        panel_Line.setBackground(new Color(255, 255,255));
     }//GEN-LAST:event_labDashboardMouseExited
 
     private void labOrderMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labOrderMouseEntered
-//        panelOrder.setBackground(new Color(250,250,250));
-//        psLine.setBackground(new Color(0,120,153));
+        panelOrder.setBackground(new Color(250,250,250));
+        psLine.setBackground(new Color(0,120,153));
     }//GEN-LAST:event_labOrderMouseEntered
 
     private void labOrderMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labOrderMouseExited
-//        panelOrder.setBackground(new Color(255,255,255));
-//        psLine.setBackground(new Color(255, 255,255));
+        panelOrder.setBackground(new Color(255,255,255));
+        psLine.setBackground(new Color(255, 255,255));
     }//GEN-LAST:event_labOrderMouseExited
 
     private void panel_LineMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel_LineMouseEntered
@@ -277,6 +291,20 @@ public class KasirPage extends javax.swing.JFrame {
         panelOrder.setBackground(new Color(255,255,255));
       psLine.setBackground(new Color(255, 255,255));
     }//GEN-LAST:event_psLineMouseExited
+
+    private void labDashboardMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labDashboardMouseClicked
+        pn_full.removeAll(); // Clear the current panel
+        pn_full.add(dashboardPanel); // Add the Dashboard panel
+        pn_full.revalidate(); // Refresh the panel
+        pn_full.repaint(); // Repaint the panel
+    }//GEN-LAST:event_labDashboardMouseClicked
+
+    private void labOrderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labOrderMouseClicked
+        pn_full.removeAll(); // Clear the current panel
+        pn_full.add(kasirPanel); // Add the Dashboard panel
+        pn_full.revalidate(); // Refresh the panel
+        pn_full.repaint(); // Repaint the panel
+    }//GEN-LAST:event_labOrderMouseClicked
 
     /**
      * @param args the command line arguments
