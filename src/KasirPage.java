@@ -54,6 +54,11 @@ public class KasirPage extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         pn_kiti.setBackground(new java.awt.Color(255, 153, 0));
 
@@ -305,6 +310,13 @@ public class KasirPage extends javax.swing.JFrame {
         pn_full.revalidate(); // Refresh the panel
         pn_full.repaint(); // Repaint the panel
     }//GEN-LAST:event_labOrderMouseClicked
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        pn_full.removeAll(); // Clear the current panel
+        pn_full.add(dashboardPanel); // Add the Dashboard panel
+        pn_full.revalidate(); // Refresh the panel
+        pn_full.repaint(); // Repaint the panel
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
