@@ -18,6 +18,7 @@ import javax.swing.JTable;
  */
 public class gudangpage2 extends javax.swing.JFrame {
     private Dashboard dashboardPanel; // Ubah ini menjadi variabel instance
+    Stock stockPanel = new Stock();
 
     // Constructor yang menerima Dashboard
     public gudangpage2(Dashboard dashboard) {
@@ -271,7 +272,7 @@ public class gudangpage2 extends javax.swing.JFrame {
 
     private void labStockMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labStockMouseEntered
         panelStock.setBackground(new Color(250,250,250));
-        psLine.setBackground(new Color(0,120,153));
+        psLine.setBackground(new Color(0,120,153)); 
     }//GEN-LAST:event_labStockMouseEntered
 
     private void labStockMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labStockMouseExited
@@ -301,9 +302,11 @@ public class gudangpage2 extends javax.swing.JFrame {
     }//GEN-LAST:event_panel_MainMouseClicked
 
     private void labStockMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labStockMouseClicked
-        System.out.println("Stock Barang diklik, menampilkan Stock...");
-        setContentPanel("Stock");
         accessStockTable();
+        pn_full.removeAll(); // Clear the current panel
+        pn_full.add(stockPanel); // Add the Dashboard panel
+        pn_full.revalidate(); // Refresh the panel
+        pn_full.repaint(); // Repaint the panel
     }//GEN-LAST:event_labStockMouseClicked
 
     private void labDashboardMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labDashboardMouseClicked
@@ -311,25 +314,25 @@ public class gudangpage2 extends javax.swing.JFrame {
         setContentPanel("Dashboard");
     }//GEN-LAST:event_labDashboardMouseClicked
     
+    
+    
     private void setContentPanel(String panelName) {
         cardLayout.show(pn_full, panelName);
     }
     
-    // Method untuk mengakses dan memanipulasi tabel di Stock
     public void updateStockTable(Object[][] data) {
-        stockBarangPanel.setTableData(data);
+        stockPanel.setTableData(data);
     }
     
     // Getter untuk akses tabel di Stock
     public JTable getStockTable() {
-        return stockBarangPanel.getTblStock();
+        return stockPanel.getTblStock();
     }
     
     public void accessStockTable() {
         JTable table = getStockTable();        
         System.out.println("Number of rows in table: " + table.getRowCount());
     }
-        
     /**
      * @param args the command line arguments
      */
