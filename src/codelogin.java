@@ -11,10 +11,9 @@
 public class codelogin {
     
     public static void main(String args[]) {
-        
-              bclogin LoginFrame  =   new bclogin();
-              LoginFrame.setVisible(true);
-              LoginFrame.pack();
-              LoginFrame.setLocationRelativeTo(null);
-            }
+        bclogin LoginFrame  =   new bclogin();
+        LoginFrame.setVisible(true);
+        LoginFrame.pack();
+        LoginFrame.setLocationRelativeTo(null);
+    }
 }

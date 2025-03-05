@@ -15,6 +15,40 @@ public class Dashboard extends javax.swing.JPanel {
     public Dashboard() {
         initComponents();
     }
+    
+    private String username;
+    private String jabatann;
+
+    public void setUsername(String username) {
+        if (username == null || username.isEmpty()) {
+            System.out.println("Warning: Empty username"); // untuk debugging
+            return;
+        }
+        this.username = username;
+        if (user != null) {
+            System.out.println("Setting username to: " + username); // Debugging
+            user.setText(username);
+            user.repaint();
+        } else {
+            System.out.println("user JLabel is null"); // Debugging
+        }
+    }
+
+    public void setJabatan(String jabatan) {
+        if (jabatan == null || jabatan.isEmpty()) {
+            System.out.println("Warning: Empty jabatan"); // untuk debugging
+            return;
+        }
+
+        // Ubah huruf pertama menjadi kapital dan sisanya huruf kecil
+        String formattedJabatan = jabatan.substring(0, 1).toUpperCase() + jabatan.substring(1).toLowerCase();
+
+        this.jabatann = formattedJabatan; // Simpan jabatan yang sudah diformat
+        if (jab != null) { // Pastikan komponennya sudah diinisialisasi
+            jab.setText(formattedJabatan); // Set teks jabatan yang sudah diformat
+            jab.repaint(); // Memaksa komponen untuk digambar ulang
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -31,7 +65,7 @@ public class Dashboard extends javax.swing.JPanel {
         user = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jabatan = new javax.swing.JLabel();
+        jab = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
@@ -56,9 +90,9 @@ public class Dashboard extends javax.swing.JPanel {
         jLabel5.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         jLabel5.setText("Anda Login Sebagai,");
 
-        jabatan.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
-        jabatan.setForeground(new java.awt.Color(255, 153, 0));
-        jabatan.setText("Manajer");
+        jab.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        jab.setForeground(new java.awt.Color(255, 153, 0));
+        jab.setText("Manajer");
 
         jLabel7.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         jLabel7.setText("!");
@@ -112,7 +146,7 @@ public class Dashboard extends javax.swing.JPanel {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jabatan))
+                                .addComponent(jab))
                             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -131,7 +165,7 @@ public class Dashboard extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jabatan)
+                    .addComponent(jab)
                     .addComponent(jLabel7))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -161,7 +195,7 @@ public class Dashboard extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JLabel jabatan;
+    private javax.swing.JLabel jab;
     private javax.swing.JLabel user;
     // End of variables declaration//GEN-END:variables
 }

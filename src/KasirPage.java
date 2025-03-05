@@ -20,7 +20,14 @@ import javax.swing.SwingConstants;
  */
 public class KasirPage extends javax.swing.JFrame {
 
-    Dashboard dashboardPanel = new Dashboard();
+    private Dashboard dashboardPanel; // Ubah ini menjadi variabel instance
+
+    // Constructor yang menerima Dashboard
+    public KasirPage(Dashboard dashboard) {
+        this.dashboardPanel = dashboard; // Set dashboardPanel dengan instance yang diberikan
+        initComponents();
+    }
+    
     Kasir kasirPanel = new Kasir();
     /**
      * Creates new form ManagerPage

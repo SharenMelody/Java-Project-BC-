@@ -15,13 +15,21 @@ import javax.swing.JTable;
  * @author User
  */
 public class ManagerPage extends javax.swing.JFrame {
-Dashboard dashboardPanel = new Dashboard();
+private Dashboard dashboardPanel; // Ubah ini menjadi variabel instance
+
+    // Constructor yang menerima Dashboard
+    public ManagerPage(Dashboard dashboard) {
+        this.dashboardPanel = dashboard; // Set dashboardPanel dengan instance yang diberikan
+        initComponents();
+    }
+    
 Keuangan keuanganPanel = new Keuangan();
 Stock stockPanel = new Stock();
     /**
      * Creates new form ManagerPage
      */
     public ManagerPage() {
+        this(new Dashboard());
         initComponents();
     }
 

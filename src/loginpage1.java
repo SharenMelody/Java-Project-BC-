@@ -2,6 +2,7 @@
 import javax.swing.JOptionPane;
 import model.Petugas;
 import dao.LoginDAO;
+import javax.swing.JFrame;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -221,44 +222,49 @@ public class loginpage1 extends javax.swing.JFrame {
         String username = inputUsername.getText().trim();
         String password = inputPassword.getText().trim();
 
-        if (username.equals("")) {
+        if (username.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Username harus diisi...");
-        } else if (password.equals("")) {
+        } else if (password.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Password harus diisi...");
         } else {
             LoginDAO dao = new LoginDAO();
-Petugas petugas = dao.getPetugasByUsername(username, password);
+            Petugas petugas = dao.getPetugasByUsername(username, password);
 
-if (petugas != null) {
-    JOptionPane.showMessageDialog(null, "Login Berhasil! Selamat datang, " + petugas.getNama_petugas());
-    
-    // Menggunakan switch-case untuk menangani berbagai jabatan
-    switch (petugas.getJabatan()) {
-        case "manager":
-            ManagerPage manager = new ManagerPage();
-            manager.setVisible(true);
-            break;
-        
-        case "kasir":
-            KasirPage kasir = new KasirPage();
-            kasir.setVisible(true);
-            break;
-        
-        case "staff gudang":
-            gudangpage2 staffGudang = new gudangpage2();
-            staffGudang.setVisible(true);
-            break;
-        
-        default:
-            JOptionPane.showMessageDialog(null, "Jabatan tidak dikenali!");
-            break;
-    }
-    
-    // Tutup JFrame Login setelah pindah
-    this.dispose();
-} else {
-    JOptionPane.showMessageDialog(null, "Username atau Password salah!");
-}
+            if (petugas != null) {
+                JOptionPane.showMessageDialog(null, "Login Berhasil! Selamat datang, " + petugas.getNama_petugas());
+
+                // Buat instance Dashboard dan set username serta jabatan
+                Dashboard dashboard = new Dashboard();
+                dashboard.setUsername(petugas.getNama_petugas());
+                dashboard.setJabatan(petugas.getJabatan());
+
+                // Menggunakan switch-case untuk menangani berbagai jabatan
+                switch (petugas.getJabatan().toLowerCase()) {
+                    case "manager":
+                        ManagerPage manager = new ManagerPage(dashboard); // Kirim dashboard yang sudah di-set
+                        manager.setVisible(true);
+                        dispose();
+                        break;
+
+                    case "kasir":
+                        KasirPage kasir = new KasirPage(dashboard); // Kirim dashboard yang sudah di-set
+                        kasir.setVisible(true);
+                        dispose();
+                        break;
+
+                    case "staff gudang":
+                        gudangpage2 gudang = new gudangpage2(dashboard); // Kirim dashboard yang sudah di-set
+                        gudang.setVisible(true);
+                        dispose();
+                        break;
+
+                    default:
+                        JOptionPane.showMessageDialog(null, "Jabatan tidak dikenali!");
+                        break;
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Username atau Password salah!");
+            }
         }
     }//GEN-LAST:event_buttonLoginActionPerformed
 
@@ -296,7 +302,7 @@ if (petugas != null) {
                 new loginpage1().setVisible(true);
             }
         });
-    }
+    }  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bc;
@@ -305,7 +311,7 @@ if (petugas != null) {
     private javax.swing.JLabel foto;
     private javax.swing.JLabel iconlock;
     private javax.swing.JTextField inputPassword;
-    private javax.swing.JTextField inputUsername;
+    public static javax.swing.JTextField inputUsername;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

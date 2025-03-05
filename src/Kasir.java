@@ -29,7 +29,7 @@ public class Kasir extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         btnReset = new javax.swing.JButton();
         btnBayar = new javax.swing.JButton();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jDateChooser1 = new org.netbeans.modules.form.InvalidComponent();
         btnSave = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -65,9 +65,6 @@ public class Kasir extends javax.swing.JPanel {
             }
         });
 
-        jDateChooser1.setDate(new java.util.Date());
-        jDateChooser1.setEnabled(false);
-
         btnSave.setBackground(new java.awt.Color(255, 226, 167));
         btnSave.setText("SAVE");
         btnSave.addActionListener(new java.awt.event.ActionListener() {
@@ -89,7 +86,7 @@ public class Kasir extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        label1.setAlignment(1);
+        label1.setAlignment(java.awt.Label.CENTER);
         label1.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         label1.setForeground(new java.awt.Color(0, 0, 0));
         label1.setText("Daftar Barang");
@@ -107,17 +104,17 @@ public class Kasir extends javax.swing.JPanel {
         jTextField2.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
-        label2.setAlignment(1);
+        label2.setAlignment(java.awt.Label.CENTER);
         label2.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         label2.setForeground(new java.awt.Color(0, 0, 0));
         label2.setText("Kembalian");
 
-        label3.setAlignment(1);
+        label3.setAlignment(java.awt.Label.CENTER);
         label3.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         label3.setForeground(new java.awt.Color(0, 0, 0));
         label3.setText("Payment");
 
-        label4.setAlignment(1);
+        label4.setAlignment(java.awt.Label.CENTER);
         label4.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         label4.setForeground(new java.awt.Color(0, 0, 0));
         label4.setText("Nama Barang");
@@ -135,12 +132,12 @@ public class Kasir extends javax.swing.JPanel {
         label5.setForeground(new java.awt.Color(0, 0, 0));
         label5.setText("ID Petugas : ");
 
-        label6.setAlignment(1);
+        label6.setAlignment(java.awt.Label.CENTER);
         label6.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         label6.setForeground(new java.awt.Color(0, 0, 0));
         label6.setText("Jumlah Beli");
 
-        label7.setAlignment(1);
+        label7.setAlignment(java.awt.Label.CENTER);
         label7.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         label7.setForeground(new java.awt.Color(0, 0, 0));
         label7.setText("Harga Barang");
@@ -155,7 +152,7 @@ public class Kasir extends javax.swing.JPanel {
             }
         });
 
-        label8.setAlignment(1);
+        label8.setAlignment(java.awt.Label.CENTER);
         label8.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         label8.setForeground(new java.awt.Color(0, 0, 0));
         label8.setText("Total Harga");
@@ -201,12 +198,11 @@ public class Kasir extends javax.swing.JPanel {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE)
                     .addComponent(label1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(label2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(btnReset, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(btnSave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addComponent(btnBayar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnReset, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnSave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnBayar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28))
         );
         layout.setVerticalGroup(
@@ -252,7 +248,6 @@ public class Kasir extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(btnBayar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, 0)
                         .addComponent(label8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -295,7 +290,7 @@ public class Kasir extends javax.swing.JPanel {
     private javax.swing.JButton btnBayar;
     private javax.swing.JButton btnReset;
     private javax.swing.JButton btnSave;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private org.netbeans.modules.form.InvalidComponent jDateChooser1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSpinner jSpinner1;

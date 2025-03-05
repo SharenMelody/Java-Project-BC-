@@ -17,7 +17,14 @@ import javax.swing.JTable;
  * @author User
  */
 public class gudangpage2 extends javax.swing.JFrame {
-    Dashboard dashboardPanel = new Dashboard();
+    private Dashboard dashboardPanel; // Ubah ini menjadi variabel instance
+
+    // Constructor yang menerima Dashboard
+    public gudangpage2(Dashboard dashboard) {
+        this.dashboardPanel = dashboard; // Set dashboardPanel dengan instance yang diberikan
+        initComponents();
+    }
+    
  
 //    private Dashboard dashboardPanel; // Panel Dashboard
     private Stock stockBarangPanel; // Panel Stock Barang

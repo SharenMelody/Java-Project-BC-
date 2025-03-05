@@ -52,7 +52,7 @@
                               <Group type="102" attributes="0">
                                   <Component id="jLabel5" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jabatan" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jab" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Component id="jPanel2" max="32767" attributes="0"/>
                           </Group>
@@ -78,7 +78,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel5" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                      <Component id="jabatan" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jab" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -135,7 +135,7 @@
             <Property name="text" type="java.lang.String" value="Anda Login Sebagai,"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jabatan">
+        <Component class="javax.swing.JLabel" name="jab">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="SansSerif" size="24" style="1"/>
