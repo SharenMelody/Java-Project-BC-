@@ -221,4 +221,22 @@ public class RestockDAO {
         }
         return detailRestock;
     }
+    
+    // Method untuk menghitung total pengeluaran
+    public double calculateTotalExpenses() {
+        double totalExpenses = 0;
+        try {
+            ps = con.prepareStatement(
+                "SELECT SUM(qty_produk * harga_satuan) AS total_expenses " +
+                "FROM detail_restock"
+            );
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                totalExpenses = rs.getDouble("total_expenses");
+            }
+        } catch (SQLException e) {
+            System.out.println("Error calculating total expenses: " + e);
+        }
+        return totalExpenses;
+    }
 }
