@@ -54,22 +54,22 @@ public class RestockDAO {
     }
 
     // Menambahkan data restock baru ke dalam tabel 'restock'
-    public void insertRestock(String restock_id, String petugas_id, String vendor_id, String no_sk, java.sql.Date tanggal_restock, String status_restock) {
-        String query = "INSERT INTO restock (restock_id, petugas_id, vendor_id, no_sk, tanggal_restock, status_restock) VALUES (?, ?, ?, ?, ?, ?)";
+    public boolean insertRestock(String restock_id, String petugas_id, int vendor_id) {
+        String query = "INSERT INTO restock (restock_id, petugas_id, vendor_id) VALUES (?, ?, ?)";
         try {
             ps = con.prepareStatement(query);
             ps.setString(1, restock_id);
             ps.setString(2, petugas_id);
-            ps.setString(3, vendor_id);
-            ps.setString(4, no_sk);
-            ps.setDate(5, tanggal_restock);
-            ps.setString(6, status_restock);
+            ps.setInt(3, vendor_id);
             ps.executeUpdate();  // Menjalankan query untuk menambahkan restock baru
 
             System.out.println("Restock berhasil ditambahkan");
+            return true;
+            
         } catch (SQLException e) {
             System.out.println("Error: " + e);
         }
+        return false;
     }
 
     // Mengupdate data restock berdasarkan restock_id
@@ -155,7 +155,7 @@ public class RestockDAO {
     }
 
     // Menambahkan detail restock baru ke dalam tabel 'detail_restock'
-    public void insertDetailRestock(String restock_id, String produk_id, int qty_produk, double harga_satuan) {
+    public void insertDetailRestock(String restock_id, String produk_id, int qty_produk, Double harga_satuan) {
         String query = "INSERT INTO detail_restock (restock_id, produk_id, qty_produk, harga_satuan) VALUES (?, ?, ?, ?)";
         try {
             ps = con.prepareStatement(query);

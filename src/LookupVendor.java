@@ -4,20 +4,20 @@
  * and open the template in the editor.
  */
 
-import dao.ProdukDAO;
+import dao.VendorDAO;
 import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author Asus
  */
-public class LookupKasir extends javax.swing.JDialog {
-    ProdukDAO dao = new ProdukDAO();
+public class LookupVendor extends javax.swing.JDialog {
+    VendorDAO dao = new VendorDAO();
     String context;
     
     /**
      * Creates new form LookupView
      */
-    public LookupKasir(javax.swing.JPanel parent, boolean modal) {
+    public LookupVendor(javax.swing.JPanel parent, boolean modal) {
         initComponents();
         context = parent.getClass().getName();
     }
@@ -62,8 +62,6 @@ public class LookupKasir extends javax.swing.JDialog {
                 .addContainerGap(27, Short.MAX_VALUE))
         );
 
-        lblLookup.getAccessibleContext().setAccessibleName("Daftar Produk");
-
         tblLookup.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -101,57 +99,9 @@ public class LookupKasir extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tblLookupMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblLookupMouseClicked
-        if (lblLookup.getText().equals("Daftar Produk")) {
-            Kasir.txtIdProduk.setText(tblLookup.getValueAt(tblLookup.getSelectedRow(),0).toString());
-            Kasir.txtNamaProduk.setText(tblLookup.getValueAt(tblLookup.getSelectedRow(),1).toString());
-            Kasir.txtHarga.setText(tblLookup.getValueAt(tblLookup.getSelectedRow(),2).toString());
-            
-            Restock.txtIdProduk.setText(tblLookup.getValueAt(tblLookup.getSelectedRow(),0).toString());
-            Restock.txtNamaProduk.setText(tblLookup.getValueAt(tblLookup.getSelectedRow(),1).toString());
-            
-            // Mengambil nilai dari kolom kedua (index 2) pada baris yang dipilih
-            Object value = tblLookup.getValueAt(tblLookup.getSelectedRow(), 2);
-
-            // Mengonversi nilai ke Double
-            Double Harga = null;
-
-            if (value != null) {
-                try {
-                    // Mengonversi nilai ke Double, jika formatnya benar
-                    Harga = Double.parseDouble(value.toString());
-
-                    // Melakukan pengurangan berdasarkan ketentuan yang diberikan
-                    if (Harga <= 1000) {
-                        Harga -= 500;
-                    } else if (Harga <= 3000) {
-                        Harga -= 1000;
-                    } else if (Harga <= 5000) {
-                        Harga -= 2000;
-                    } else if (Harga <= 10000) {
-                        Harga -= 3000;
-                    } else if (Harga <= 15000) {
-                        Harga -= 5000;
-                    } else if (Harga <= 25000) {
-                        Harga -= 10000;
-                    } else if (Harga <= 50000) {
-                        Harga -= 15000;
-                    } else {
-                        Harga -= 25000;  // Jika lebih dari 50,000
-                    }
-
-                    // Menampilkan harga yang telah dikurangi
-                    System.out.println("Harga setelah pengurangan: " + Harga);
-
-                } catch (NumberFormatException e) {
-                    // Menangani error jika konversi gagal
-                    System.out.println("Error: Tidak dapat mengonversi nilai menjadi Double.");
-                }
-            }
-            Restock.txtHarga.setText(Harga.toString());
-        } else {
-            Restock.txtIdProduk.setText(tblLookup.getValueAt(tblLookup.getSelectedRow(),0).toString());
-            Restock.txtNamaProduk.setText(tblLookup.getValueAt(tblLookup.getSelectedRow(),1).toString());
-        }
+        String id = tblLookup.getValueAt(tblLookup.getSelectedRow(),0).toString();
+        String nama = tblLookup.getValueAt(tblLookup.getSelectedRow(),1).toString();
+        Restock.txtVendor.setText( id + " - " + nama);
     }//GEN-LAST:event_tblLookupMouseClicked
 
     /**

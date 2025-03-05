@@ -18,7 +18,7 @@ import javax.swing.JTable;
  */
 public class gudangpage2 extends javax.swing.JFrame {
     private Dashboard dashboardPanel; // Ubah ini menjadi variabel instance
-    Stock stockPanel = new Stock();
+    Restock restockPanel = new Restock();
 
     // Constructor yang menerima Dashboard
     public gudangpage2(Dashboard dashboard) {
@@ -36,15 +36,6 @@ public class gudangpage2 extends javax.swing.JFrame {
      */
     public gudangpage2() {
         initComponents();
-        
-        cardLayout = new CardLayout();
-        pn_full.setLayout(cardLayout);
-        
-        dashboardPanel = new Dashboard();
-        stockBarangPanel = new Stock();
-
-        pn_full.add(dashboardPanel, "Dashboard");
-        pn_full.add(stockBarangPanel, "Stock");
 
 //        cardLayout = new CardLayout();
 //        pn_full.getLayout();
@@ -297,42 +288,44 @@ public class gudangpage2 extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void panel_MainMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel_MainMouseClicked
-        System.out.println("Dashboard diklik, menampilkan Dashboard...");
-        setContentPanel("Dashboard");
+        pn_full.removeAll(); // Clear the current panel
+        pn_full.add(dashboardPanel); // Add the Dashboard panel
+        System.out.println("Dashboard di click");
+        pn_full.revalidate(); // Refresh the panel
+        pn_full.repaint(); // Repaint the panel
     }//GEN-LAST:event_panel_MainMouseClicked
 
     private void labStockMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labStockMouseClicked
-        accessStockTable();
-        pn_full.removeAll(); // Clear the current panel
-        pn_full.add(stockPanel); // Add the Dashboard panel
-        pn_full.revalidate(); // Refresh the panel
-        pn_full.repaint(); // Repaint the panel
+
+        pn_full.removeAll();
+        pn_full.add(restockPanel);
+        System.out.println("restockPanel di click");
+        pn_full.revalidate();
+        pn_full.repaint();
     }//GEN-LAST:event_labStockMouseClicked
 
     private void labDashboardMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labDashboardMouseClicked
-        System.out.println("Dashboard diklik, menampilkan Dashboard...");
-        setContentPanel("Dashboard");
+        pn_full.removeAll(); // Clear the current panel
+        pn_full.add(dashboardPanel); // Add the Dashboard panel
+        System.out.println("Dashboard di click");
+        pn_full.revalidate(); // Refresh the panel
+        pn_full.repaint(); // Repaint the panel
     }//GEN-LAST:event_labDashboardMouseClicked
     
-    
-    
-    private void setContentPanel(String panelName) {
-        cardLayout.show(pn_full, panelName);
-    }
-    
-    public void updateStockTable(Object[][] data) {
-        stockPanel.setTableData(data);
+    public void updateProdukTable(Object[][] data) {
+        restockPanel.setTableData(data);
     }
     
     // Getter untuk akses tabel di Stock
-    public JTable getStockTable() {
-        return stockPanel.getTblStock();
+    public JTable getProdukTable() {
+        return restockPanel.getTblProduk();
     }
     
-    public void accessStockTable() {
-        JTable table = getStockTable();        
+    public void accessProdukTable() {
+        JTable table = getProdukTable();   
         System.out.println("Number of rows in table: " + table.getRowCount());
     }
+    
     /**
      * @param args the command line arguments
      */
