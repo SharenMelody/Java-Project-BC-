@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.SwingConstants;
 
 
@@ -35,8 +36,6 @@ public class KasirPage extends javax.swing.JFrame {
     public KasirPage() {
         initComponents();
     }
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -191,6 +190,11 @@ public class KasirPage extends javax.swing.JFrame {
         );
 
         buttonLogout.setText("Logout");
+        buttonLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonLogoutActionPerformed(evt);
+            }
+        });
 
         jLabel2.setBackground(new java.awt.Color(0, 0, 0));
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User.png"))); // NOI18N
@@ -314,6 +318,7 @@ public class KasirPage extends javax.swing.JFrame {
     private void labOrderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labOrderMouseClicked
         pn_full.removeAll(); // Clear the current panel
         pn_full.add(kasirPanel); // Add the Dashboard panel
+        System.out.println("Kasir di click");
         pn_full.revalidate(); // Refresh the panel
         pn_full.repaint(); // Repaint the panel
     }//GEN-LAST:event_labOrderMouseClicked
@@ -321,13 +326,34 @@ public class KasirPage extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         pn_full.removeAll(); // Clear the current panel
         pn_full.add(dashboardPanel); // Add the Dashboard panel
+        System.out.println("Dashboard di click");
         pn_full.revalidate(); // Refresh the panel
         pn_full.repaint(); // Repaint the panel
+        
+        accessProdukTable();
     }//GEN-LAST:event_formWindowOpened
 
-    /**
-     * @param args the command line arguments
-     */
+    private void buttonLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLogoutActionPerformed
+        this.dispose();
+        
+        loginpage1 login = new loginpage1();    
+        login.setVisible(true);
+    }//GEN-LAST:event_buttonLogoutActionPerformed
+
+    public void updateProdukTable(Object[][] data) {
+        kasirPanel.setTableData(data);
+    }
+    
+    // Getter untuk akses tabel di Stock
+    public JTable getProdukTable() {
+        return kasirPanel.getTblProduk();
+    }
+    
+    public void accessProdukTable() {
+        JTable table = getProdukTable();        
+        System.out.println("Number of rows in table: " + table.getRowCount());
+    }
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

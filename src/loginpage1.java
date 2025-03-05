@@ -237,24 +237,28 @@ public class loginpage1 extends javax.swing.JFrame {
                 Dashboard dashboard = new Dashboard();
                 dashboard.setUsername(petugas.getNama_petugas());
                 dashboard.setJabatan(petugas.getJabatan());
+                
+
+                Kasir kasir = dashboard.getKasir();
+                kasir.setIdPetugas(petugas.getPetugas_id());
 
                 // Menggunakan switch-case untuk menangani berbagai jabatan
                 switch (petugas.getJabatan().toLowerCase()) {
                     case "manager":
-                        ManagerPage manager = new ManagerPage(dashboard); // Kirim dashboard yang sudah di-set
-                        manager.setVisible(true);
+                        ManagerPage managerpage = new ManagerPage(dashboard); // Kirim dashboard yang sudah di-set
+                        managerpage.setVisible(true);
                         dispose();
                         break;
 
                     case "kasir":
-                        KasirPage kasir = new KasirPage(dashboard); // Kirim dashboard yang sudah di-set
-                        kasir.setVisible(true);
+                        KasirPage kasirpage = new KasirPage(dashboard); // Kirim dashboard yang sudah di-set
+                        kasirpage.setVisible(true);
                         dispose();
                         break;
 
                     case "staff gudang":
-                        gudangpage2 gudang = new gudangpage2(dashboard); // Kirim dashboard yang sudah di-set
-                        gudang.setVisible(true);
+                        gudangpage2 gudangpage = new gudangpage2(dashboard); // Kirim dashboard yang sudah di-set
+                        gudangpage.setVisible(true);
                         dispose();
                         break;
 

@@ -12,12 +12,16 @@ public class Dashboard extends javax.swing.JPanel {
     /**
      * Creates new form Dashboard
      */
-    public Dashboard() {
-        initComponents();
-    }
     
     private String username;
     private String jabatann;
+    
+    private Kasir kasir;
+    
+    public Dashboard() {
+        initComponents();
+        kasir = new Kasir();
+    }
 
     public void setUsername(String username) {
         if (username == null || username.isEmpty()) {
@@ -48,6 +52,10 @@ public class Dashboard extends javax.swing.JPanel {
             jab.setText(formattedJabatan); // Set teks jabatan yang sudah diformat
             jab.repaint(); // Memaksa komponen untuk digambar ulang
         }
+    }
+    
+    public Kasir getKasir() {
+        return kasir; // Menyediakan akses ke objek Kasir
     }
 
     /**
