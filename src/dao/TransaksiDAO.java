@@ -105,25 +105,6 @@ public class TransaksiDAO {
         }
     }
 
-    
-    public boolean checkTransaksiIdExists(String transaksi_id) {
-        String query = "SELECT COUNT(*) FROM transaksi WHERE transaksi_id = ?";
-        try {
-            ps = con.prepareStatement(query);
-            ps.setString(1, transaksi_id);
-            rs = ps.executeQuery();
-
-            if (rs.next() && rs.getInt(1) > 0) {
-                return true;  // Jika transaksi_id ditemukan di tabel transaksi
-            }
-            return false;  // Jika transaksi_id tidak ditemukan
-        } catch (SQLException e) {
-            System.out.println("Error: " + e);
-            return false;
-        }
-    }
-
-
     // Mengupdate data transaksi berdasarkan transaksi_id
     public void updateTransaksi(String transaksi_idNew, String petugas_id, java.sql.Timestamp waktu_transaksi, String transaksi_idOld) {
         String query = "UPDATE Transaksi SET transaksi_id = ?, petugas_id = ?, waktu_transaksi = ? WHERE transaksi_id = ?";
