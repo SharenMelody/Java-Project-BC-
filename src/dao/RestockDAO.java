@@ -240,41 +240,4 @@ public class RestockDAO {
         }
         return totalExpenses;
     }
-    
-    public DefaultTableModel getLookRestock() {
-        DefaultTableModel modelRestock = new DefaultTableModel();
-        try {
-            listRestock = new ArrayList();
-            ps = con.prepareStatement("SELECT produk_id, nama_produk, harga FROM Produk", ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-            rs = ps.executeQuery();
-            rs.beforeFirst();
-            while(rs.next()) {
-                restock = new Restock();
-                restock.setProduk_id(rs.getString("produk_id"));
-                produk.setNama_produk(rs.getString("nama_produk"));
-                produk.setHarga(rs.getDouble("harga"));
-                listProduk.add(produk);
-            }
-        }catch (SQLException se) {
-                System.out.println("Error : "+se);
-                listProduk = null;
-        }
-        if (listProduk != null && listProduk.size() > 0) {
-            Object[][] dataTabel = new Object[listProduk.size()][3];
-            for (int i = 0; i < listProduk.size(); i++) {
-                System.out.println("Mengisi dataTabel[" + i + "][0]: " + produk.getProduk_id());
-                System.out.println("Mengisi dataTabel[" + i + "][1]: " + produk.getNama_produk());
-                System.out.println("Mengisi dataTabel[" + i + "][2]: " + produk.getHarga());
-                    
-                dataTabel[i][0] = listProduk.get(i).getProduk_id();
-                dataTabel[i][1] = listProduk.get(i).getNama_produk();
-                dataTabel[i][2] = listProduk.get(i).getHarga();
-            }
-            String[] colNames = {"Produk ID", "Nama Produk", "Harga"};
-            modelProduk = new DefaultTableModel(dataTabel, colNames);
-        } else {
-            System.out.println("Tidak ada produk.");
-        }
-        return modelProduk;
-    }
 }

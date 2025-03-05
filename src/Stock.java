@@ -258,7 +258,7 @@ public class Stock extends javax.swing.JPanel {
 
     private void LookupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LookupActionPerformed
         LookupRestock lookup = new LookupRestock(this, true);
-        LookupRestock.tblLookup.setModel(dao.getLookRestock());
+//        LookupRestock.tblLookup.setModel(dao.getLookRestock());
         LookupRestock.scrLookup.setViewportView(LookupRestock.tblLookup);
         lookup.setVisible(true);
         
