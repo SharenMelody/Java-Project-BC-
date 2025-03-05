@@ -484,18 +484,11 @@ public class Kasir extends javax.swing.JPanel {
     }//GEN-LAST:event_btnSaveMouseClicked
 
     private void btnBayarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBayarMouseClicked
-
-        transaksiID = TransaksiDao.getLatestTransaksiId();
-        if (!TransaksiDao.checkTransaksiIdExists(transaksiID)) {
-            System.out.println("Transaksi ID tidak ditemukan di tabel transaksi");
-            return;
-        }
-
-        // Tabel DetailTransaksi
+        String transaksiID = txtTransaksi.getText();
         String ProdukID = txtIdProduk.getText();
         int JumlahProduk = (int) spinJumlah.getValue();
         Double Harga = Double.parseDouble(txtHarga.getText());
-
+        
         // Insert ke Detail Transaksi
         TransaksiDao.insertDetailTransaksi(transaksiID, ProdukID, JumlahProduk, Harga);
     }//GEN-LAST:event_btnBayarMouseClicked
