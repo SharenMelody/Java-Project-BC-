@@ -168,4 +168,61 @@ public class ProdukDAO {
         }
         return modelProduk;
     }
+    
+    // New method to get low stock products
+    public DefaultTableModel getLowStockProducts() {
+        DefaultTableModel modelLowStock = new DefaultTableModel();
+        try {
+            listProduk = new ArrayList<>();
+            ps = con.prepareStatement(
+                "SELECT produk_id, nama_produk, stock, satuan " +
+                "FROM Produk " +
+                "WHERE CAST(stock AS DECIMAL) <= 5 " +
+                "ORDER BY CAST(stock AS DECIMAL) ASC", 
+                ResultSet.TYPE_SCROLL_INSENSITIVE, 
+                ResultSet.CONCUR_READ_ONLY
+            );
+            rs = ps.executeQuery();
+            rs.beforeFirst();
+            while(rs.next()) {
+                produk = new Produk();
+                produk.setProduk_id(rs.getString("produk_id"));
+                produk.setNama_produk(rs.getString("nama_produk"));
+                produk.setStock(rs.getString("stock"));
+                produk.setSatuan(rs.getString("satuan"));
+                listProduk.add(produk);
+            }
+        } catch (SQLException se) {
+            System.out.println("Error getting low stock products: " + se);
+            listProduk = null;
+        }
+
+        if (listProduk != null && !listProduk.isEmpty()) {
+            Object[][] dataTabel = new Object[listProduk.size()][4];
+            for (int i = 0; i < listProduk.size(); i++) {
+                dataTabel[i][0] = listProduk.get(i).getProduk_id();
+                dataTabel[i][1] = listProduk.get(i).getNama_produk();
+                dataTabel[i][2] = listProduk.get(i).getStock();
+                dataTabel[i][3] = listProduk.get(i).getSatuan();
+            }
+            String[] colNames = {"Produk ID", "Nama Produk", "Stock", "Satuan"};
+            modelLowStock = new DefaultTableModel(dataTabel, colNames);
+        }
+        return modelLowStock;
+    }
+
+    // Method to check if there are low stock products
+    public boolean hasLowStockProducts() {
+        try {
+            ps = con.prepareStatement(
+                "SELECT * FROM Produk WHERE CAST(REPLACE(stock, ' ', '') AS DECIMAL) <= 5"
+            );
+            rs = ps.executeQuery();
+            return rs.next();
+        } catch (SQLException se) {
+            System.out.println("Error checking low stock: " + se);
+            se.printStackTrace();
+        }
+        return false;
+    }
 }

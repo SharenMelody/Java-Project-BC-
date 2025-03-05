@@ -3,12 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
+import dao.ProdukDAO;
 /**
  *
  * @author smkn24
  */
 public class Dashboard extends javax.swing.JPanel {
+    private ProdukDAO produkDAO;
     /**
      * Creates new form Dashboard
      */
@@ -21,6 +22,8 @@ public class Dashboard extends javax.swing.JPanel {
     public Dashboard() {
         initComponents();
         kasir = new Kasir();
+        produkDAO = new ProdukDAO();
+        jPanel2.setVisible(false);
     }
 
     public void setUsername(String username) {
@@ -40,20 +43,47 @@ public class Dashboard extends javax.swing.JPanel {
 
     public void setJabatan(String jabatan) {
         if (jabatan == null || jabatan.isEmpty()) {
-            System.out.println("Warning: Empty jabatan"); // untuk debugging
+            System.out.println("Warning: Empty jabatan");
             return;
         }
 
         // Ubah huruf pertama menjadi kapital dan sisanya huruf kecil
         String formattedJabatan = jabatan.substring(0, 1).toUpperCase() + jabatan.substring(1).toLowerCase();
 
-        this.jabatann = formattedJabatan; // Simpan jabatan yang sudah diformat
-        if (jab != null) { // Pastikan komponennya sudah diinisialisasi
-            jab.setText(formattedJabatan); // Set teks jabatan yang sudah diformat
-            jab.repaint(); // Memaksa komponen untuk digambar ulang
+        this.jabatann = formattedJabatan;
+        if (jab != null) {
+            jab.setText(formattedJabatan);
+            jab.repaint();
+
+            // Tambahkan debug print
+            System.out.println("Current Jabatan: " + formattedJabatan);
+            System.out.println("Is Jabatan Manajer? " + "Manager".equalsIgnoreCase(formattedJabatan));
+
+            // Only show low stock warning for Manajer
+            if ("Manager".equalsIgnoreCase(formattedJabatan)) {
+                checkLowStockAndUpdateWarning();
+            } else {
+                jPanel2.setVisible(false);
+            }
         }
     }
-    
+
+    private void checkLowStockAndUpdateWarning() {
+        if (produkDAO != null) {
+            boolean hasLowStock = produkDAO.hasLowStockProducts();
+
+            // Tambahkan debug print yang lebih detail
+            System.out.println("Debug - Low Stock Check:");
+            System.out.println("ProdukDAO Initialized: " + (produkDAO != null));
+            System.out.println("Has Low Stock Products: " + hasLowStock);
+
+            jPanel2.setVisible(hasLowStock);
+        } else {
+            System.out.println("ProdukDAO is not initialized");
+            jPanel2.setVisible(false);
+        }
+    }
+
     public Kasir getKasir() {
         return kasir; // Menyediakan akses ke objek Kasir
     }
@@ -106,9 +136,14 @@ public class Dashboard extends javax.swing.JPanel {
         jLabel7.setText("!");
 
         jPanel2.setBackground(new java.awt.Color(237, 244, 255));
+        jPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel2MouseClicked(evt);
+            }
+        });
 
         jLabel8.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        jLabel8.setText("Stock Popmie menipis!");
+        jLabel8.setText("Terdapat Barang Dengan Stock Sedikit");
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 0, 0));
@@ -118,17 +153,17 @@ public class Dashboard extends javax.swing.JPanel {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(17, 17, 17))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(14, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(jLabel11))
@@ -177,7 +212,7 @@ public class Dashboard extends javax.swing.JPanel {
                     .addComponent(jLabel7))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(196, Short.MAX_VALUE))
+                .addContainerGap(195, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -191,6 +226,22 @@ public class Dashboard extends javax.swing.JPanel {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jPanel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseClicked
+        if (produkDAO != null) {
+            LookupStockMenipis lookupDialog = new LookupStockMenipis(
+                (java.awt.Frame)javax.swing.SwingUtilities.getWindowAncestor(Dashboard.this), 
+                true
+            );
+            
+            // Set the table model with low stock products
+            lookupDialog.tblStockTipis.setModel(produkDAO.getLowStockProducts());
+            lookupDialog.scrStockTipis.setViewportView(lookupDialog.tblStockTipis);
+            lookupDialog.setVisible(true);
+        } else {
+            System.out.println("Cannot open low stock dialog - ProdukDAO not initialized");
+        }
+    }//GEN-LAST:event_jPanel2MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
