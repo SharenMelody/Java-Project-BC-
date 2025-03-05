@@ -51,18 +51,57 @@ public class TransaksiDAO {
     }
 
     // Menambahkan data transaksi baru ke dalam tabel 'transaksi'
-    public void insertTransaksi(String transaksi_id, String petugas_id, java.sql.Timestamp waktu_transaksi) {
-        String query = "INSERT INTO transaksi (transaksi_id, petugas_id, waktu_transaksi) VALUES (?, ?, ?)";
+    public boolean insertTransaksi(String transaksiID, String petugas_id) {
+        try {
+            con.setAutoCommit(false);
+
+            String query = "INSERT INTO transaksi (transaksi_id, petugas_id) VALUES (?, ?)";
+            ps = con.prepareStatement(query);
+            ps.setString(1, transaksiID);
+            ps.setString(2, petugas_id);
+            int rowsAffected = ps.executeUpdate();
+
+
+            if (rowsAffected > 0) {
+                con.commit();
+                System.out.println("Transaksi berhasil ditambahkan");
+                return true;
+            } else {
+                con.rollback();
+                System.out.println("Transaksi gagal ditambahkan");
+                return false;
+            }
+        } catch (SQLException e) {
+            try {
+                con.rollback();
+            } catch (SQLException ex) {
+                System.out.println("Rollback failed: " + ex);
+            }
+            System.out.println("Error: " + e);
+            return false;
+        } finally {
+            try {
+                // Mengaktifkan kembali autocommit setelah transaksi selesai
+                con.setAutoCommit(true);
+            } catch (SQLException e) {
+                System.out.println("Error setting autoCommit: " + e);
+            }
+        }
+    }
+    
+    public String getLatestTransaksiId() {
+        String query = "SELECT transaksi_id FROM transaksi ORDER BY waktu_transaksi DESC LIMIT 1";
         try {
             ps = con.prepareStatement(query);
-            ps.setString(1, transaksi_id);
-            ps.setString(2, petugas_id);
-            ps.setTimestamp(3, waktu_transaksi);
-            ps.executeUpdate();  // Menjalankan query untuk menambahkan transaksi baru
+            rs = ps.executeQuery();
 
-            System.out.println("Transaksi berhasil ditambahkan");
+            if (rs.next()) {
+                return rs.getString("transaksi_id");  // Mengembalikan transaksi_id yang paling baru
+            }
+            return null;
         } catch (SQLException e) {
             System.out.println("Error: " + e);
+            return null;
         }
     }
 
@@ -226,11 +265,11 @@ public class TransaksiDAO {
     }
 
     // Menambahkan detail transaksi baru ke dalam tabel 'detail_transaksi'
-    public void insertDetailTransaksi(String transaksi_id, String produk_id, int qty_produk, double harga_satuan) {
+    public void insertDetailTransaksi(String transaksiID, String produk_id, int qty_produk, double harga_satuan) {
         String query = "INSERT INTO detail_transaksi (transaksi_id, produk_id, qty_produk, harga_satuan) VALUES (?, ?, ?, ?)";
         try {
             ps = con.prepareStatement(query);
-            ps.setString(1, transaksi_id);
+            ps.setString(1, transaksiID);
             ps.setString(2, produk_id);
             ps.setInt(3, qty_produk);
             ps.setDouble(4, harga_satuan);
