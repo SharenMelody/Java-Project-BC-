@@ -240,7 +240,9 @@ public class loginpage1 extends javax.swing.JFrame {
                 
 
                 Kasir kasir = dashboard.getKasir();
-                kasir.setIdPetugas(petugas.getPetugas_id());
+                KasirPage kasirPage = new KasirPage();
+                kasirPage.setIdPetugasToKasir(petugas.getPetugas_id());
+//                kasir.setIdPetugas(petugas.getPetugas_id());
 
                 // Menggunakan switch-case untuk menangani berbagai jabatan
                 switch (petugas.getJabatan().toLowerCase()) {

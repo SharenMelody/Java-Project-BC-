@@ -36,6 +36,10 @@ public class KasirPage extends javax.swing.JFrame {
     public KasirPage() {
         initComponents();
     }
+    
+    public void setIdPetugasToKasir(String idPetugas) {
+        kasirPanel.setIdPetugas(idPetugas); // Mengakses setIdPetugas dari Kasir
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.

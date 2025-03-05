@@ -152,11 +152,7 @@ public class ProdukDAO {
         }
         if (listProduk != null && listProduk.size() > 0) {
             Object[][] dataTabel = new Object[listProduk.size()][3];
-            for (int i = 0; i < listProduk.size(); i++) {
-                System.out.println("Mengisi dataTabel[" + i + "][0]: " + produk.getProduk_id());
-                System.out.println("Mengisi dataTabel[" + i + "][1]: " + produk.getNama_produk());
-                System.out.println("Mengisi dataTabel[" + i + "][2]: " + produk.getHarga());
-                    
+            for (int i = 0; i < listProduk.size(); i++) {                    
                 dataTabel[i][0] = listProduk.get(i).getProduk_id();
                 dataTabel[i][1] = listProduk.get(i).getNama_produk();
                 dataTabel[i][2] = listProduk.get(i).getHarga();
