@@ -27,28 +27,32 @@ public class Kasir extends javax.swing.JPanel {
         setWaktuTransaksi();
     }
     
-    private String idPetugas;
-
+        private String idPetugas;
+    
     public void setIdPetugas(String idPetugas) {
         if (idPetugas == null || idPetugas.isEmpty()) {
             System.out.println("Warning: Empty Id Petugas");
             IdPetugasTxt.setText("ID Petugas: Tidak Diketahui");
-            return;
+//            return IdPetugasTxt.setText("ID Petugas: Tidak Diketahui");  // Mengembalikan pesan jika idPetugas kosong
         }
 
-        this.idPetugas = idPetugas;
+        this.idPetugas = idPetugas;  // Menyimpan idPetugas dalam variabel kelas
         if (IdPetugasTxt != null) {
             System.out.println("Setting Id Petugas to: " + idPetugas);
             System.out.println("Before setText: " + IdPetugasTxt.getText());
 
-            // Hanya set "ID Petugas: " + idPetugas jika idPetugas valid
             IdPetugasTxt.setText("ID Petugas: " + idPetugas);
+            System.out.println("After setText: " + idPetugas);
 
             System.out.println("After setText: " + IdPetugasTxt.getText());
+//            return IdPetugasTxt.setText("ID Petugas: " + idPetugas);
         } else {
             System.out.println("IdPetugas JTextField is null");
+//            return "ID Petugas: Tidak Diketahui";
         }
     }
+   
+
     
     public void setWaktuTransaksi() {
         Date currentDate = new Date();

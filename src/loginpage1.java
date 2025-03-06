@@ -237,12 +237,6 @@ public class loginpage1 extends javax.swing.JFrame {
                 Dashboard dashboard = new Dashboard();
                 dashboard.setUsername(petugas.getNama_petugas());
                 dashboard.setJabatan(petugas.getJabatan());
-                
-
-                Kasir kasir = dashboard.getKasir();
-                KasirPage kasirPage = new KasirPage();
-                kasirPage.setIdPetugasToKasir(petugas.getPetugas_id());
-//                kasir.setIdPetugas(petugas.getPetugas_id());
 
                 // Menggunakan switch-case untuk menangani berbagai jabatan
                 switch (petugas.getJabatan().toLowerCase()) {
@@ -256,6 +250,17 @@ public class loginpage1 extends javax.swing.JFrame {
                         KasirPage kasirpage = new KasirPage(dashboard); // Kirim dashboard yang sudah di-set
                         kasirpage.setVisible(true);
                         dispose();
+                        
+                        //                KasirPage kasirPage = new KasirPage();
+        //                kasirPage.setIdPetugasToKasir(petugas.getPetugas_id());
+
+                        Kasir kasir = new Kasir();
+                        kasir.setIdPetugas(petugas.getPetugas_id());
+                        kasir.IdPetugasTxt.setText("ID Petugas: " + petugas.getPetugas_id());
+                        kasir.IdPetugasTxt.getText();
+                        kasir.IdPetugasTxt.revalidate();
+                        kasir.IdPetugasTxt.repaint();
+        //                kasir.setIdPetugas(petugas.getPetugas_id());
                         break;
 
                     case "staff gudang":

@@ -485,12 +485,14 @@ public class Restock extends javax.swing.JPanel {
         if (row >= 0) {
             String produk_id = tblProduk.getValueAt(row, 0).toString();  // Kolom pertama: Produk ID
             String nama_produk = tblProduk.getValueAt(row, 1).toString(); // Kolom kedua: Nama Produk
-//            String harga = tblProduk.getValueAt(row, 3).toString();       // Kolom ketiga: Harga
+            String harga_value = tblProduk.getValueAt(row, 3).toString();       // Kolom ketiga: Harga
+            
+            Double Harga = Harga(harga_value);
 
             // Menampilkan nilai yang dipilih ke dalam JTextField
             txtIdProduk.setText(produk_id);
             txtNamaProduk.setText(nama_produk);
-//            txtHarga.setText(harga);
+            txtHarga.setText(Harga.toString());
         }
         Hitung();
     }//GEN-LAST:event_tblProdukMousePressed
@@ -605,6 +607,43 @@ public class Restock extends javax.swing.JPanel {
         Double TotalHarga = jumlah * harga;
         String formattedTotalHarga = formatNumber(TotalHarga);
         txtTotalHarga.setText(formattedTotalHarga);
+    }
+    
+    private double Harga(String value) {
+        Double Harga = null;
+            if (value != null) {
+                try {
+                    // Mengonversi nilai ke Double, jika formatnya benar
+                    Harga = Double.parseDouble(value.toString());
+
+                    // Melakukan pengurangan berdasarkan ketentuan yang diberikan
+                    if (Harga <= 1000) {
+                        Harga -= 500;
+                    } else if (Harga <= 3000) {
+                        Harga -= 1000;
+                    } else if (Harga <= 5000) {
+                        Harga -= 2000;
+                    } else if (Harga <= 10000) {
+                        Harga -= 3000;
+                    } else if (Harga <= 15000) {
+                        Harga -= 5000;
+                    } else if (Harga <= 25000) {
+                        Harga -= 10000;
+                    } else if (Harga <= 50000) {
+                        Harga -= 15000;
+                    } else {
+                        Harga -= 25000;  // Jika lebih dari 50,000
+                    }
+
+                    // Menampilkan harga yang telah dikurangi
+                    System.out.println("Harga setelah pengurangan: " + Harga);
+
+                } catch (NumberFormatException e) {
+                    // Menangani error jika konversi gagal
+                    System.out.println("Error: Tidak dapat mengonversi nilai menjadi Double.");
+                }
+            }
+        return Harga;
     }
     
     private String formatNumber(Double number) {

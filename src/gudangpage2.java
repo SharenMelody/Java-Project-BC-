@@ -296,12 +296,13 @@ public class gudangpage2 extends javax.swing.JFrame {
     }//GEN-LAST:event_panel_MainMouseClicked
 
     private void labStockMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labStockMouseClicked
-
         pn_full.removeAll();
         pn_full.add(restockPanel);
         System.out.println("restockPanel di click");
         pn_full.revalidate();
         pn_full.repaint();
+        
+        accessProdukTable();
     }//GEN-LAST:event_labStockMouseClicked
 
     private void labDashboardMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labDashboardMouseClicked

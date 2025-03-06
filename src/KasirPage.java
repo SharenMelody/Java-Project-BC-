@@ -39,6 +39,7 @@ public class KasirPage extends javax.swing.JFrame {
     
     public void setIdPetugasToKasir(String idPetugas) {
         kasirPanel.setIdPetugas(idPetugas); // Mengakses setIdPetugas dari Kasir
+        kasirPanel.IdPetugasTxt.setText("ID Petugas: " + idPetugas);
     }
 
     /**
