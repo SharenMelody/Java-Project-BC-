@@ -519,7 +519,7 @@ public class Restock extends javax.swing.JPanel {
     }//GEN-LAST:event_txtRestockIDActionPerformed
 
     private void btnRestockMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRestockMouseClicked
-        String PetugasID = "3";  // PetugasID diset langsung, Anda bisa menyesuaikan
+        String PetugasID = "1";
         if (PetugasID == null || PetugasID.isEmpty()) {
             System.out.println("Petugas ID is null or empty");
             return;
